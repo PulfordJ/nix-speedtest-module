@@ -105,13 +105,13 @@
 
           echo
           echo "**Network Speed:**"
-          ${pkgs.speedtest-cli}/bin/speedtest-cli --simple | sed 's/^/- /'
+          ${pkgs.speedtest}/bin/speedtest --accept-license --accept-gdpr --format=human-readable | grep -E '(Download|Upload|Latency)' | sed 's/^/- /'
         '';
 
         # Development shell
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            speedtest-cli
+            speedtest
             curl
           ] ++ lib.optionals stdenv.isDarwin [
             # Note: corelocationcli would need to be installed via Homebrew
