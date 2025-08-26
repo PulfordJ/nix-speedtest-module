@@ -120,7 +120,7 @@ in {
     # Append to home-manager packages for all users
     home-manager.sharedModules = [
       {
-        home.packages = [cfg.package]; # pkgs.speedtest];
+        home.packages = [cfg.package] ++ (lib.optionals (!pkgs.stdenv.isDarwin) [pkgs.speedtest]);
       }
     ];
 
