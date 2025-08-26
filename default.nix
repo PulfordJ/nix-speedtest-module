@@ -13,7 +13,6 @@ in {
     package = mkOption {
       type = types.package;
       default = pkgs.writeShellScriptBin "speedtesthelper" ''
-        echo TESTTTINGG
         echo "## Speed Test - $(date)"
         echo
 
